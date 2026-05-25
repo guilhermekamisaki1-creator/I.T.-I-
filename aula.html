@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula — Estudo de Vocabulário e Elaboração de Respostas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#211f1a;
+  --ink-soft:#46413a;
+  --paper:#f5efe1;
+  --paper-2:#efe6d2;
+  --paper-card:#fbf7ec;
+  --wine:#7a2f3a;
+  --wine-deep:#5d222b;
+  --gold:#b07d2e;
+  --gold-soft:#e8d9b2;
+  --teal:#2f5d5a;
+  --line:#d8cdb2;
+  --shadow:rgba(45,35,20,.16);
+  --maxw:830px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(176,125,46,.07), transparent 40%),
+    radial-gradient(circle at 88% 92%, rgba(122,47,58,.07), transparent 42%);
+  color:var(--ink);
+  font-family:'Spectral',Georgia,serif;
+  font-size:18px;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+
+/* progress bar */
+#progress{
+  position:fixed;top:0;left:0;height:4px;width:0;z-index:999;
+  background:linear-gradient(90deg,var(--gold),var(--wine));
+}
+
+/* layout wrap */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#2a2620,#3a322a 55%,#4a3a32);
+  color:var(--paper);
+  padding:72px 26px 64px;
+  border-bottom:5px solid var(--gold);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 2px,transparent 2px 22px);
+  pointer-events:none;
+}
+.hero-inner{max-width:var(--maxw);margin:0 auto;position:relative}
+.kicker{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px;
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.3rem,6vw,3.7rem);
+  line-height:1.08;letter-spacing:-.01em;margin-bottom:8px;
+}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero .sub{
+  font-size:1.15rem;font-style:italic;color:#e3d8c2;max-width:560px;margin-top:14px;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;
+  color:#cdbf9f;border-top:1px solid rgba(232,217,178,.22);padding-top:20px;
+}
+.hero-meta b{color:var(--paper);font-weight:500}
+
+/* ---------- SUMÁRIO ---------- */
+.toc{
+  background:var(--paper-card);border:1px solid var(--line);
+  border-radius:14px;padding:30px 32px;margin:46px auto;
+  box-shadow:0 10px 30px -18px var(--shadow);
+}
+.toc h2{
+  font-family:'Fraunces',serif;font-size:1.05rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:18px;font-weight:600;
+}
+.toc ol{list-style:none;counter-reset:toc;display:grid;gap:3px}
+.toc li{counter-increment:toc}
+.toc a{
+  display:flex;align-items:baseline;gap:14px;text-decoration:none;color:var(--ink);
+  padding:9px 10px;border-radius:8px;transition:background .15s,color .15s;
+}
+.toc a:hover{background:var(--paper-2);color:var(--wine)}
+.toc a::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);
+  font-weight:500;min-width:26px;
+}
+.toc a span{flex:1;font-size:1.02rem}
+.toc a small{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
+
+/* ---------- SECTIONS ---------- */
+section{padding:30px 0 14px}
+.sec-head{margin:18px 0 26px}
+.sec-num{
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;
+  color:var(--wine);text-transform:uppercase;display:block;margin-bottom:8px;
+}
+.sec-head h2{
+  font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4.4vw,2.5rem);
+  line-height:1.12;letter-spacing:-.01em;color:var(--ink);
+}
+.sec-head h2::after{
+  content:"";display:block;width:62px;height:3px;margin-top:16px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+h3{
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.42rem;
+  margin:34px 0 12px;color:var(--wine-deep);line-height:1.2;
+}
+h4{
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;
+  margin:24px 0 8px;color:var(--ink);
+}
+p{margin:14px 0}
+.lead{font-size:1.12rem;color:var(--ink-soft);font-style:italic}
+strong{color:var(--wine-deep);font-weight:600}
+em.term{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%);font-weight:500;padding:0 1px}
+ul,ol{margin:14px 0 14px 4px;padding-left:24px}
+li{margin:7px 0}
+a.inline{color:var(--wine);text-decoration:underline;text-decoration-color:var(--gold)}
+
+/* ---------- BOXES ---------- */
+.box{
+  border-radius:12px;padding:22px 26px;margin:26px 0;
+  border:1px solid var(--line);position:relative;
+}
+.box .tag{
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;
+  gap:7px;margin-bottom:10px;
+}
+.box .tag::before{content:"";width:9px;height:9px;border-radius:2px;display:inline-block}
+.box p:first-of-type{margin-top:2px}
+.box p:last-child{margin-bottom:0}
+
+.box.concept{background:#f0f4f1;border-color:#cdddd0}
+.box.concept .tag{color:var(--teal)}
+.box.concept .tag::before{background:var(--teal)}
+
+.box.warn{background:#fbeee2;border-color:#e8c9a6}
+.box.warn .tag{color:#a05a18}
+.box.warn .tag::before{background:#c4731f}
+
+.box.exam{background:#f3eaf0;border-color:#d9bcc9}
+.box.exam .tag{color:var(--wine)}
+.box.exam .tag::before{background:var(--wine)}
+
+.box.add{background:#eef0e7;border-color:#cdd2bc}
+.box.add .tag{color:#5b6536}
+.box.add .tag::before{background:#6e7a3f}
+
+.box.scheme{background:#edeef2;border-color:#c7ccd9}
+.box.scheme .tag{color:#3d4a6b}
+.box.scheme .tag::before{background:#46537a}
+
+/* literary text block */
+.litera{
+  background:var(--paper-card);border:1px solid var(--line);
+  border-left:5px solid var(--gold);border-radius:4px 12px 12px 4px;
+  padding:26px 30px;margin:24px 0;
+  box-shadow:0 8px 24px -20px var(--shadow);
+}
+.litera .src-tag{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:14px;display:block;
+}
+.litera p{font-size:1.04rem;line-height:1.78}
+.verse{
+  font-family:'Fraunces',serif;font-style:italic;font-size:1.12rem;
+  line-height:1.95;white-space:pre-line;color:var(--ink);
+}
+.litera .ref{
+  text-align:right;font-size:.9rem;font-style:italic;color:var(--ink-soft);
+  margin-top:14px;
+}
+mark{background:var(--gold-soft);padding:0 3px;border-radius:2px;color:var(--ink-deep)}
+
+/* model answer (collapsible) */
+details.model{
+  border:1px solid var(--wine);border-radius:12px;margin:22px 0;overflow:hidden;
+  background:var(--paper-card);
+}
+details.model summary{
+  cursor:pointer;list-style:none;padding:16px 24px;
+  background:linear-gradient(135deg,var(--wine),var(--wine-deep));color:var(--paper);
+  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;display:flex;align-items:center;gap:12px;
+}
+details.model summary::-webkit-details-marker{display:none}
+details.model summary::before{
+  content:"▸";font-size:14px;transition:transform .2s;
+}
+details.model[open] summary::before{transform:rotate(90deg)}
+details.model summary .hint{
+  margin-left:auto;font-size:10px;opacity:.78;text-transform:none;letter-spacing:.02em;
+  font-family:'Spectral',serif;font-style:italic;
+}
+.model-body{padding:20px 26px 8px}
+.model-body p:last-child{margin-bottom:14px}
+
+/* question card */
+.qcard{
+  background:var(--paper-2);border:1px dashed var(--gold);border-radius:12px;
+  padding:18px 24px;margin:24px 0;
+}
+.qcard .qlabel{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--wine);font-weight:500;
+}
+.qcard p{margin:8px 0 0;font-style:italic}
+
+/* table */
+.tbl-wrap{overflow-x:auto;margin:24px 0}
+table{
+  width:100%;border-collapse:collapse;font-size:.96rem;
+  background:var(--paper-card);border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;
+}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{
+  background:var(--ink);color:var(--paper);font-family:'Fraunces',serif;
+  font-weight:600;font-size:.92rem;letter-spacing:.02em;
+}
+tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:var(--paper-2)}
+td strong{color:var(--wine-deep)}
+
+/* arrow scheme */
+.flow{
+  font-family:'JetBrains Mono',monospace;font-size:.86rem;line-height:1.95;
+  background:#1f1d18;color:#e8ddc4;border-radius:10px;padding:20px 22px;margin:22px 0;
+  overflow-x:auto;white-space:pre;
+}
+.flow .a{color:var(--gold-soft)}
+.flow .b{color:#9ec7c4}
+.flow .c{color:#e4a8a8}
+
+/* math step */
+.calc{
+  background:#edeef2;border:1px solid #c7ccd9;border-radius:10px;
+  padding:18px 22px;margin:20px 0;font-size:.98rem;
+}
+.calc .eq{
+  font-family:'JetBrains Mono',monospace;font-size:.92rem;background:#fff;
+  border:1px solid #d4d8e2;border-radius:7px;padding:10px 14px;margin:9px 0;
+  display:block;overflow-x:auto;
+}
+.calc .res{color:var(--wine);font-weight:600}
+
+/* videos */
+.videos{margin:26px 0}
+.videos .vhead{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:12px;display:flex;
+  align-items:center;gap:9px;
+}
+.videos .vhead::before{
+  content:"";width:0;height:0;border-style:solid;
+  border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--wine);
+}
+.vbtn{
+  display:flex;align-items:center;gap:16px;text-decoration:none;
+  background:var(--paper-card);border:1px solid var(--line);border-radius:11px;
+  padding:14px 18px;margin:9px 0;transition:transform .14s,box-shadow .14s,border-color .14s;
+  color:var(--ink);
+}
+.vbtn:hover{
+  transform:translateY(-2px);box-shadow:0 12px 26px -16px var(--shadow);
+  border-color:var(--wine);
+}
+.vbtn .play{
+  flex:none;width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--wine),var(--wine-deep));
+  display:flex;align-items:center;justify-content:center;
+}
+.vbtn .play::before{
+  content:"";width:0;height:0;border-style:solid;margin-left:3px;
+  border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff;
+}
+.vbtn .vinfo{flex:1;min-width:0}
+.vbtn .vtitle{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;line-height:1.25}
+.vbtn .vchan{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);
+  margin-top:3px;letter-spacing:.03em;
+}
+.vbtn .go{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--wine);text-transform:uppercase;flex:none;
+}
+
+/* divider */
+.div-orn{
+  text-align:center;margin:48px 0;color:var(--gold);font-size:1.4rem;letter-spacing:.6em;
+}
+
+/* recap */
+.recap{
+  background:linear-gradient(160deg,#2a2620,#3a322a);color:var(--paper);
+  border-radius:16px;padding:36px 34px;margin:40px 0;
+}
+.recap h3{color:var(--gold-soft);margin-top:0}
+.recap ul{list-style:none;padding:0}
+.recap li{
+  padding:11px 0 11px 30px;border-bottom:1px solid rgba(232,217,178,.16);
+  position:relative;color:#e8ddc6;
+}
+.recap li:last-child{border-bottom:none}
+.recap li::before{
+  content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;
+}
+.recap li b{color:#fff}
+
+/* footer */
+footer{
+  text-align:center;padding:46px 26px 60px;color:var(--ink-soft);
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+  border-top:1px solid var(--line);margin-top:30px;
+}
+footer .crest{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--wine);
+  letter-spacing:.02em;margin-bottom:8px;font-style:italic}
+
+.backtop{
+  display:inline-block;margin-top:6px;text-decoration:none;color:var(--wine);
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;
+}
+
+@media (max-width:560px){
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .box{padding:18px 18px}
+  .litera{padding:20px 20px}
+  .toc{padding:24px 20px}
+  .hero{padding:54px 20px 48px}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">Leitura e Interpretação de Textos · 2.ª Série E.M.</div>
+    <h1>Estudo de Vocabulário <em>&amp;</em><br>Elaboração de Respostas</h1>
+    <p class="sub">Da leitura precisa de uma palavra à construção de uma resposta discursiva impecável — uma aula completa, do zero ao nível de vestibular concorrido.</p>
+    <div class="hero-meta">
+      <span><b>Componente</b> · Leitura e Interpretação de Textos</span>
+      <span><b>Professor</b> · Thiago</span>
+      <span><b>Foco</b> · Vocabulário · Questões discursivas</span>
+      <span><b>Banca-modelo</b> · FUVEST — 2.ª fase</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ===================== SUMÁRIO ===================== -->
+<nav class="toc">
+  <h2>Roteiro da Aula</h2>
+  <ol>
+    <li><a href="#p1"><span>O que estamos estudando — visão geral</span><small>Base</small></a></li>
+    <li><a href="#p2"><span>Estudo de vocabulário: a palavra certa no lugar certo</span><small>Teoria</small></a></li>
+    <li><a href="#p3"><span>Elaboração de respostas: o método das questões discursivas</span><small>Método</small></a></li>
+    <li><a href="#p4"><span>Texto 1 — Montaigne e a inconstância humana</span><small>Análise</small></a></li>
+    <li><a href="#p5"><span>Texto 2 — Camões e o tema da mudança</span><small>Análise</small></a></li>
+    <li><a href="#p6"><span>Os exercícios resolvidos passo a passo</span><small>Prática</small></a></li>
+    <li><a href="#p7"><span>Gabarito comentado — modelos de resposta de elite</span><small>FUVEST</small></a></li>
+    <li><a href="#p8"><span>Pegadinhas, erros frequentes e o que mais cai</span><small>Revisão</small></a></li>
+    <li><a href="#p9"><span>Revisão final dos conceitos-chave</span><small>Síntese</small></a></li>
+  </ol>
+</nav>
+
+<!-- ===================== 1. VISÃO GERAL ===================== -->
+<section id="p1">
+  <div class="sec-head">
+    <span class="sec-num">Parte 01 — Fundamentos</span>
+    <h2>O que estamos estudando, de verdade</h2>
+  </div>
+
+  <p class="lead">À primeira vista, este material parece apenas uma coletânea de textos e questões. Mas o título do conteúdo entrega o objetivo real da aula: <em class="term">“Estudo de vocabulário e de elaboração de respostas”</em>.</p>
+
+  <p>Ou seja, não vamos só interpretar textos — vamos aprender <strong>duas habilidades-ferramenta</strong> que sustentam absolutamente todas as provas de Linguagens:</p>
+
+  <div class="box scheme">
+    <span class="tag">Os dois pilares da aula</span>
+    <p><strong>Pilar 1 — Vocabulário.</strong> Entender o que cada palavra significa <em>dentro do contexto</em>. Sem isso, a leitura desaba: você lê as letras, mas não acessa o sentido.</p>
+    <p><strong>Pilar 2 — Elaboração de respostas.</strong> Saber transformar a interpretação que está na sua cabeça em uma resposta escrita que o corretor consiga ler, entender e pontuar integralmente.</p>
+  </div>
+
+  <p>Repare na lógica do material que você recebeu. O caderno de <strong>exercícios</strong> traz dois textos clássicos — um de Montaigne, outro de Camões — e pede análise temática e substituição de vocabulário. Já o <strong>gabarito</strong> reúne uma questão de Química e quatro questões de 2.ª fase da FUVEST. Por que misturar Química com Literatura?</p>
+
+  <div class="box concept">
+    <span class="tag">A ideia central</span>
+    <p>Porque <strong>“elaborar uma resposta” é uma habilidade única</strong>, que vale para qualquer matéria. Ler o enunciado de um problema de Química com atenção é o <em>mesmo gesto mental</em> de ler o comando de uma questão de interpretação de texto. Quem erra a conta muitas vezes não errou a matemática: errou a <strong>interpretação do enunciado</strong>.</p>
+  </div>
+
+  <p>Então, ao longo desta aula, cada texto e cada questão servirá para treinar esses dois pilares. Vamos do conceito mais simples — o que é um sinônimo — até o nível mais avançado: como redigir uma resposta de 2.ª fase de FUVEST que não perca um único ponto.</p>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 2. ESTUDO DE VOCABULÁRIO ===================== -->
+<section id="p2">
+  <div class="sec-head">
+    <span class="sec-num">Parte 02 — Teoria do vocabulário</span>
+    <h2>Estudo de vocabulário: a palavra certa no lugar certo</h2>
+  </div>
+
+  <p>Interpretar um texto é, antes de tudo, <strong>acessar o sentido das palavras</strong>. E sentido não é uma coisa fixa que mora no dicionário: ele se ajusta ao contexto. Vamos organizar isso por etapas.</p>
+
+  <h3>2.1 — Denotação e conotação</h3>
+  <p>Toda palavra pode ser usada de duas formas:</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Tipo de sentido</th><th>O que é</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Denotação</strong><br>(sentido literal)</td><td>O significado próprio, objetivo, “de dicionário”. Não depende de interpretação.</td><td>“O <em>gelo</em> derreteu no copo.” → água em estado sólido.</td></tr>
+      <tr><td><strong>Conotação</strong><br>(sentido figurado)</td><td>O significado ampliado, subjetivo, expressivo. Depende do contexto e da carga emotiva.</td><td>“Ele me tratou com <em>gelo</em>.” → frieza, indiferença.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A linguagem literária vive da conotação; a linguagem técnica e científica busca a denotação. Reconhecer em qual “modo” a palavra está sendo usada é o primeiro passo da interpretação — e, como veremos, é exatamente o que a FUVEST cobra na questão sobre a palavra <em>“transparente”</em>.</p>
+
+  <h3>2.2 — Sinônimo perfeito não existe</h3>
+  <p>Este é o ponto mais importante para a questão de substituição vocabular do exercício. Guarde esta frase:</p>
+  <div class="box warn">
+    <span class="tag">Princípio de ouro</span>
+    <p>Não basta o sinônimo estar “certo no dicionário”. Ele precisa caber <strong>naquele contexto específico</strong>, mantendo três coisas: o <strong>sentido</strong>, a <strong>classe gramatical</strong> e o <strong>registro</strong> (nível de formalidade).</p>
+  </div>
+  <p>Veja como uma mesma palavra muda de “sinônimo ideal” conforme o contexto:</p>
+  <ul>
+    <li>“Ele tem um carro <strong>velho</strong>.” → sinônimo: <em>antigo, usado</em>.</li>
+    <li>“Aquele é um <strong>velho</strong> conhecido meu.” → sinônimo: <em>antigo, de longa data</em> — <u>jamais</u> “usado”.</li>
+    <li>“O <strong>velho</strong> sentou no banco da praça.” → sinônimo: <em>idoso, ancião</em>.</li>
+  </ul>
+  <p>É a mesma palavra “velho”, mas o sinônimo válido muda completamente. Por isso falamos em <em class="term">sinônimo contextual</em>: aquele que substitui o termo <strong>sem prejuízo de sentido</strong> dentro daquela frase.</p>
+
+  <h3>2.3 — Como deduzir o sentido de uma palavra desconhecida</h3>
+  <p>Você não precisa ter decorado todas as palavras do português. Existe um método — o uso do <strong>cotexto</strong> (o entorno da palavra):</p>
+  <div class="box scheme">
+    <span class="tag">Roteiro de dedução</span>
+    <p><strong>① Morfologia</strong> — quebre a palavra. “In-constância” = <em>in</em> (negação) + <em>constância</em> → falta de constância.</p>
+    <p><strong>② Vizinhança</strong> — veja as palavras ao redor. Se aparecem “desregramento” e “falta de moderação”, o termo perto tem a ver com desordem.</p>
+    <p><strong>③ Oposição</strong> — textos costumam contrastar ideias. Se “constância” se opõe a algo, esse algo é a “mudança”.</p>
+    <p><strong>④ Exemplo</strong> — o autor frequentemente exemplifica logo depois. Use o exemplo como definição.</p>
+  </div>
+
+  <h3>2.4 — Polissemia e campo semântico</h3>
+  <p><strong>Polissemia</strong> é o fenômeno de uma única palavra ter <em>vários</em> sentidos possíveis (“banco” de praça, “banco” financeiro, “banco” de areia). O contexto seleciona qual sentido vale.</p>
+  <p><strong>Campo semântico</strong> é o conjunto de palavras que “puxam” para uma mesma ideia. No texto de Camões, por exemplo, “mudam-se”, “novidades”, “converte”, “mudança” formam o campo semântico da <em>transformação</em>. Identificar o campo semântico dominante é identificar o <strong>tema</strong> do texto.</p>
+
+  <div class="videos">
+    <div class="vhead">Vídeos recomendados — vocabulário e sentido</div>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=q2dJEHvdJio" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Denotação x Conotação — não erre mais!</span><span class="vchan">Aula completa sobre sentido literal e figurado</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=tFmSm1Gulig" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Sentido Denotativo x Conotativo — Profa. Pamba</span><span class="vchan">Curso de Estilística · base para figuras de linguagem</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+  </div>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 3. ELABORAÇÃO DE RESPOSTAS ===================== -->
+<section id="p3">
+  <div class="sec-head">
+    <span class="sec-num">Parte 03 — Método</span>
+    <h2>Elaboração de respostas: o método das questões discursivas</h2>
+  </div>
+
+  <p>Aqui está a verdade incômoda das provas de 2.ª fase: <strong>a maioria dos alunos sabe a resposta, mas perde pontos na hora de escrevê-la.</strong> Esta seção é o coração da aula.</p>
+
+  <h3>3.1 — Leia o comando como um detetive</h3>
+  <p>Todo enunciado de questão discursiva contém <strong>verbos de comando</strong>. Eles dizem exatamente o que (e o quanto) você deve fazer. Confundir um pelo outro custa pontos.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Verbo de comando</th><th>O que ele exige</th><th>Tamanho da resposta</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Indique / Aponte / Cite / Identifique</strong></td><td>Localizar e nomear algo. Resposta direta.</td><td>Curta — uma frase pode bastar.</td></tr>
+      <tr><td><strong>Explique / Comente / Analise</strong></td><td>Desenvolver, mostrar o porquê, detalhar o funcionamento.</td><td>Média a longa — exige desenvolvimento.</td></tr>
+      <tr><td><strong>Justifique / Comprove</strong></td><td>Sustentar uma afirmação <em>com base no texto</em> — citar evidência textual é obrigatório.</td><td>Média — afirmação + prova.</td></tr>
+      <tr><td><strong>Você concorda? Justifique</strong></td><td>Tomar posição clara (sim / não / parcialmente) e fundamentá-la.</td><td>Média — posição + argumento.</td></tr>
+      <tr><td><strong>Calcule</strong></td><td>Apresentar o desenvolvimento, não só o número final.</td><td>Mostrar todas as etapas.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>3.2 — A regra do “responda todos os itens”</h3>
+  <div class="box warn">
+    <span class="tag">O erro nº 1 nas correções</span>
+    <p>Muitas questões trazem <strong>dois ou mais comandos escondidos numa frase só</strong>. Olhe a questão (a) do exercício: <em>“Indique a afinidade temática <u>e</u> a maneira como cada autor constrói essa temática.”</em> São <strong>dois</strong> pedidos: (1) qual é o tema comum e (2) como cada autor o desenvolve. Quem responde só o primeiro perde metade da nota — mesmo tendo entendido o texto.</p>
+  </div>
+  <p><strong>Técnica prática:</strong> antes de escrever, numere os comandos do enunciado com lápis (①, ②, ③). Ao terminar, confira se cada número foi respondido.</p>
+
+  <h3>3.3 — A estrutura da resposta perfeita</h3>
+  <div class="box scheme">
+    <span class="tag">Esquema — anatomia da resposta</span>
+    <p><strong>① Frase-resposta direta</strong> → comece respondendo objetivamente o que foi perguntado. Nada de enrolação introdutória.</p>
+    <p><strong>② Desenvolvimento / justificativa</strong> → explique o porquê e traga a evidência do texto (paráfrase ou citação curta entre aspas).</p>
+    <p><strong>③ Fechamento</strong> (quando o comando pedir comparação ou conclusão) → amarre as ideias.</p>
+  </div>
+  <p>Esquema visual do fluxo de uma boa resposta:</p>
+  <div class="flow"><span class="a">[ LEIO O COMANDO ]</span>
+        │  identifico TODOS os verbos de comando
+        ▼
+<span class="b">[ NUMERO OS PEDIDOS ]</span>  ① ② ③ ...
+        │
+        ▼
+<span class="a">[ VOLTO AO TEXTO ]</span>  localizo a evidência de cada pedido
+        │
+        ▼
+<span class="c">[ ESCREVO ]</span>  frase-resposta → justificativa c/ prova → fecho
+        │
+        ▼
+<span class="b">[ REVISO ]</span>  cada nº ① ② ③ foi respondido? sem copiar o texto?</div>
+
+  <h3>3.4 — Os mandamentos da escrita</h3>
+  <ul>
+    <li><strong>Seja objetivo.</strong> Frases curtas e diretas erram menos gramática e são mais fáceis de pontuar. O corretor agradece.</li>
+    <li><strong>Não copie o texto.</strong> Transcrever trechos não é responder. Você deve <em>parafrasear</em> e <em>explicar</em> — citações entram apenas como prova, curtas e entre aspas.</li>
+    <li><strong>Não escreva o que não foi pedido.</strong> Despejar tudo o que você sabe não soma pontos; só aumenta a chance de cometer um erro que tira pontos.</li>
+    <li><strong>Tome posição.</strong> Em questões “você concorda?”, em cima do muro não pontua. E concordar <em>parcialmente</em> é uma resposta legítima e sofisticada — desde que você diga em quê concorda e em quê não.</li>
+  </ul>
+
+  <div class="videos">
+    <div class="vhead">Vídeos recomendados — questões discursivas de 2.ª fase</div>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=7rKV_r64v54" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Como acertar as questões da 2.ª fase da Fuvest — Língua Portuguesa</span><span class="vchan">Estratégia de prova para o Trio Paulista</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=t1gfNxVVWPk" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Resolução de questões discursivas de 2.ª fase FUVEST — Profa. Ale Lopes</span><span class="vchan">Estratégia Vestibulares · resolução comentada</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=ObOUi0nrmHY" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">FUVEST — Português: questões discursivas da segunda fase</span><span class="vchan">Como a banca aborda Língua Portuguesa</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+  </div>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 4. MONTAIGNE ===================== -->
+<section id="p4">
+  <div class="sec-head">
+    <span class="sec-num">Parte 04 — Análise do Texto 1</span>
+    <h2>Montaigne e a inconstância humana</h2>
+  </div>
+
+  <div class="litera">
+    <span class="src-tag">Texto 1 · Michel de Montaigne</span>
+    <p>Há alguma razão em fazer o julgamento de um homem pelos aspectos mais comuns de sua vida; mas, tendo em vista a natural instabilidade de nossos costumes e opiniões, muitas vezes me pareceu que mesmo os bons autores estão errados em se obstinarem em formar de nós uma ideia constante e sólida. Escolhem um caráter universal e, seguindo essa imagem, vão arrumando e interpretando todas as ações de um personagem, e, se não conseguem <mark>torcê</mark>-las o suficiente, atribuem-nas à dissimulação. […]</p>
+    <p>Em toda a Antiguidade é difícil escolher uma dúzia de homens que tenham <mark>ordenado</mark> sua vida num projeto definido e seguro, que é o principal objetivo da sabedoria. […] É uma frase de Demóstenes, dizem, que “o começo de toda virtude são a reflexão e a deliberação, e seu fim e sua perfeição, a constância”.</p>
+    <p class="ref">— Michel de Montaigne. <em>Os ensaios: uma seleção</em>, 2010. (Adaptado.)</p>
+  </div>
+
+  <div class="box add">
+    <span class="tag">Complemento para melhor compreensão</span>
+    <p><strong>Michel de Montaigne</strong> (1533–1592) foi um pensador francês do Renascimento e o <strong>criador do gênero “ensaio”</strong> — em francês, <em>essai</em>, que significa “tentativa”. O ensaio é um texto em prosa, reflexivo, em primeira pessoa, que “experimenta” ideias sem a pretensão de uma verdade definitiva. Compreender o gênero ajuda a entender o tom do texto: Montaigne não <em>decreta</em>, ele <em>pondera</em>.</p>
+  </div>
+
+  <h3>4.1 — A tese central</h3>
+  <p>O texto defende uma ideia provocadora: <strong>o ser humano é inconstante</strong>. Montaigne afirma acreditar “mais dificilmente na constância dos homens do que em qualquer outra coisa, e em nada mais facilmente do que na inconstância”.</p>
+  <p>A consequência prática dessa tese: é um <strong>erro metodológico</strong> tentar enquadrar uma pessoa em um “caráter universal” fixo. Para Montaigne, até os bons autores erram quando fazem isso — eles escolhem uma imagem do indivíduo e <em>forçam</em> todas as ações a se encaixarem nela. E quando uma ação não encaixa? Eles a chamam de “dissimulação” (fingimento) — em vez de admitir que a pessoa simplesmente mudou.</p>
+
+  <div class="box concept">
+    <span class="tag">A solução de Montaigne</span>
+    <p>Em vez de julgar a pessoa por um “molde único”, deve-se julgá-la <strong>“peça por peça”</strong>, “nos pormenores e separadamente”. Cada ação tem seu próprio contexto. Quem aceita a inconstância humana “teria mais ocasiões de dizer a verdade”.</p>
+  </div>
+
+  <h3>4.2 — O argumento de autoridade</h3>
+  <p>Característica típica do ensaio renascentista: Montaigne recorre aos <strong>clássicos da Antiguidade</strong> para fundamentar sua reflexão. Ele cita:</p>
+  <ul>
+    <li>Um “antigo” que define a sabedoria como “sempre querer a mesma coisa, é sempre não querer a mesma coisa” — isto é, a sabedoria seria uma <strong>constância da vontade</strong>.</li>
+    <li><strong>Demóstenes</strong>, segundo quem “o começo de toda virtude são a reflexão e a deliberação, e seu fim e sua perfeição, a constância”.</li>
+  </ul>
+  <p>Há aqui uma tensão riquíssima: os clássicos dizem que a virtude e a sabedoria <em>exigem constância</em> — mas Montaigne observa que, na prática, <strong>“ninguém pensa antes de agir”</strong>. As pessoas se contradizem: “exige o que acaba de abandonar; agita-se e sua vida não se dobra a nenhuma ordem.” O ideal clássico de constância é nobre; a realidade humana, porém, é o movimento e a contradição.</p>
+
+  <div class="box scheme">
+    <span class="tag">Esquema — a lógica do texto</span>
+    <div class="flow" style="margin:6px 0;background:#26241e"><span class="a">IDEAL CLÁSSICO</span>            <span class="c">REALIDADE OBSERVADA</span>
+sabedoria = querer       ✗      homem = inconstante,
+sempre o mesmo;          ←──→   muda costumes e
+virtude termina na              opiniões o tempo todo
+constância                      ("ninguém pensa antes
+                                de agir")
+        │
+        ▼
+<span class="b">CONCLUSÃO DE MONTAIGNE:</span> julgue o homem "peça por peça",
+não por um caráter único e fixo.</div>
+  </div>
+
+  <h3>4.3 — Foco no vocabulário: as duas palavras em destaque</h3>
+  <p>O exercício destaca dois termos no texto de Montaigne. Vamos analisá-los agora — eles serão a base da questão (b).</p>
+
+  <h4>► Palavra 1: <em class="term">torcê</em>-las</h4>
+  <p>No trecho “se não conseguem <strong>torcê-las</strong> o suficiente”, o verbo <em>torcer</em> <u>não</u> está no sentido literal (torcer uma roupa, torcer o tornozelo). Está no sentido figurado: os autores <strong>distorcem, deturpam, forçam</strong> as ações para encaixá-las no caráter que inventaram.</p>
+  <div class="box concept">
+    <span class="tag">Sinônimo contextual</span>
+    <p>Substituições válidas: <strong>distorcê-las</strong>, <strong>deturpá-las</strong> ou <strong>forçá-las</strong>. Todas mantêm a ideia de “alterar artificialmente para encaixar”. <em>Não</em> serviria “girá-las” ou “enrolá-las” — seriam sentidos literais, fora do contexto.</p>
+  </div>
+
+  <h4>► Palavra 2: <em class="term">ordenado</em></h4>
+  <p>No trecho “homens que tenham <strong>ordenado</strong> sua vida num projeto definido e seguro”, o verbo <em>ordenar</em> significa <strong>organizar, estruturar, disciplinar, regrar</strong> a própria vida segundo um plano. (Cuidado: aqui <em>não</em> tem o sentido de “dar uma ordem/mandar”, nem o de “ordenado” como salário.)</p>
+  <div class="box concept">
+    <span class="tag">Sinônimo contextual</span>
+    <p>Substituições válidas: <strong>organizado</strong>, <strong>estruturado</strong>, <strong>regrado</strong> ou <strong>disciplinado</strong>. O sentido é o de uma vida planejada, conduzida com método.</p>
+  </div>
+
+  <div class="videos">
+    <div class="vhead">Vídeo recomendado — base de leitura crítica</div>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=n0e75nRstcU" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Figuras de Linguagem — Aula 01 — Prof. Noslen</span><span class="vchan">Denotação, conotação e leitura de sentidos figurados</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+  </div>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 5. CAMÕES ===================== -->
+<section id="p5">
+  <div class="sec-head">
+    <span class="sec-num">Parte 05 — Análise do Texto 2</span>
+    <h2>Camões e o tema da mudança</h2>
+  </div>
+
+  <div class="litera">
+    <span class="src-tag">Texto 2 · Luís de Camões — Soneto</span>
+    <p class="verse">Mudam-se os tempos, mudam-se as vontades,
+muda-se o ser, muda-se a confiança;
+todo o Mundo é composto de mudança,
+tomando sempre novas qualidades.
+
+Continuamente vemos novidades,
+diferentes em tudo da esperança;
+do mal ficam as mágoas na lembrança,
+e do bem (se algum houve), as saudades.
+
+O tempo cobre o chão de verde manto,
+que já coberto foi de neve fria,
+e, enfim, converte em choro o doce canto.
+
+E, afora este mudar-se cada dia,
+outra mudança faz de mor espanto,
+que não se muda já como soia.</p>
+  </div>
+
+  <div class="box add">
+    <span class="tag">Complemento para melhor compreensão</span>
+    <p><strong>Luís de Camões</strong> (c. 1524–1580) é o maior poeta da língua portuguesa e a grande referência do <strong>Classicismo / Quinhentismo</strong>. Este é um <strong>soneto</strong>: poema fixo de 14 versos, organizados em 2 quartetos + 2 tercetos, em versos <strong>decassílabos</strong> (10 sílabas poéticas). Dois arcaísmos a anotar: <em>“mor”</em> = maior; <em>“soia”</em> = costumava (do verbo <em>soer</em>).</p>
+  </div>
+
+  <h3>5.1 — O tema: tudo muda</h3>
+  <p>O tema é anunciado de forma quase martelada no primeiro verso e percorre o poema inteiro: a <strong>mudança</strong>, a <strong>transitoriedade</strong> de todas as coisas. Repare no recurso da <strong>anáfora</strong> e da repetição: “Mudam-se… mudam-se… muda-se… muda-se…”. O próprio ritmo do verso <em>imita</em> o tema — a forma reforça o conteúdo.</p>
+  <p>Logo no primeiro quarteto, a tese: <strong>“todo o Mundo é composto de mudança”</strong>. Mudam o tempo, as vontades, o ser e até a confiança. Nada permanece.</p>
+
+  <h3>5.2 — A construção, estrofe por estrofe</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Estrofe</th><th>O que apresenta</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1.º quarteto</strong></td><td>A tese geral: o mundo é feito de mudança e assume sempre “novas qualidades”.</td></tr>
+      <tr><td><strong>2.º quarteto</strong></td><td>A mudança no plano humano: vemos sempre “novidades” diferentes do que esperávamos. Do mal sobram mágoas; do bem, saudades.</td></tr>
+      <tr><td><strong>1.º terceto</strong></td><td>A mudança na natureza: o campo, antes coberto de “neve fria”, ganha um “verde manto”; o “doce canto” vira “choro”. O ciclo das estações.</td></tr>
+      <tr><td><strong>2.º terceto</strong></td><td>A virada (a “chave de ouro”): existe uma mudança “de mor espanto” — maior espanto. <strong>Veremos a seguir.</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>5.3 — A chave de ouro: o paradoxo final</h3>
+  <p>Os três últimos versos contêm o ápice do soneto e um dos finais mais comentados da poesia portuguesa:</p>
+  <div class="litera" style="border-left-color:var(--wine)">
+    <p class="verse">E, afora este mudar-se cada dia,
+outra mudança faz de mor espanto,
+que não se muda já como soia.</p>
+  </div>
+  <p>Tradução do raciocínio: <em>“Além dessa mudança de todo dia, há uma outra mudança que me espanta ainda mais: a de que as coisas já não mudam como costumavam mudar.”</em></p>
+  <div class="box concept">
+    <span class="tag">O paradoxo</span>
+    <p>O eu lírico afirma um <strong>paradoxo</strong>: até a própria <em>mudança mudou</em>. O mundo mudava de forma previsível, cíclica — o inverno virava primavera, e isso confortava. Agora, nem esse padrão se mantém. A leitura mais aceita liga isso à dor amorosa do eu lírico: o sofrimento dele não se renova, não passa como deveria — perdeu-se até o consolo da renovação natural. O que mais o espanta não é a mudança, e sim a <strong>quebra do ritmo da mudança</strong>.</p>
+  </div>
+
+  <h3>5.4 — Forma do soneto</h3>
+  <p>Esquema de rimas: <strong>ABBA ABBA CDC DCD</strong> — rimas intercaladas nos quartetos e alternadas nos tercetos. Versos decassílabos. Essa arquitetura rígida e equilibrada é marca do <strong>Classicismo</strong>, que valoriza a ordem, a medida e o ideal de perfeição formal herdado da Antiguidade greco-latina.</p>
+
+  <div class="videos">
+    <div class="vhead">Vídeos recomendados — o soneto de Camões</div>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=9dKPuJh4X_M" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Soneto de Camões — “Mudam-se os tempos, mudam-se as vontades”</span><span class="vchan">Análise completa · tema da mudança e transitoriedade</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=KBt38yheX2E" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Camões — “Mudam-se os tempos, mudam-se as vontades”</span><span class="vchan">Expandindo o Português · leitura e análise do soneto</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+  </div>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 6. EXERCÍCIOS RESOLVIDOS ===================== -->
+<section id="p6">
+  <div class="sec-head">
+    <span class="sec-num">Parte 06 — Prática guiada</span>
+    <h2>Os exercícios resolvidos passo a passo</h2>
+  </div>
+
+  <p>Agora aplicamos tudo. Tente responder cada questão sozinho <strong>antes</strong> de abrir o modelo de resposta — é assim que o estudo rende.</p>
+
+  <!-- Questão a -->
+  <div class="qcard">
+    <span class="qlabel">Questão (a)</span>
+    <p>Indique a afinidade temática entre o texto de Montaigne e o de Camões e a maneira como cada autor constrói essa temática.</p>
+  </div>
+
+  <h4>Como atacar</h4>
+  <p>Lembre da Parte 3: este enunciado tem <strong>dois comandos</strong>. ① Qual é o tema comum? ② Como <em>cada</em> autor (são dois!) constrói esse tema? Uma resposta completa precisa cobrir os dois — e tratar Montaigne <em>e</em> Camões separadamente no comando ②.</p>
+
+  <details class="model">
+    <summary>Modelo de resposta — Questão (a)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p><strong>① Afinidade temática.</strong> Os dois textos tratam do mesmo tema: a <strong>inconstância</strong> e a <strong>transitoriedade</strong>. Montaigne reflete sobre a inconstância da <em>natureza humana</em> — o homem não tem um caráter fixo, muda de costumes e opiniões. Camões trata da inconstância e da mudança do <em>mundo e das vontades</em> — “todo o Mundo é composto de mudança”.</p>
+      <p><strong>② A construção em Montaigne.</strong> Ele desenvolve o tema em <em>prosa</em>, no gênero <strong>ensaio</strong>: argumenta de forma reflexiva, em primeira pessoa, recorrendo a autoridades clássicas (Demóstenes e um “antigo”) e ao raciocínio filosófico para criticar quem tenta enquadrar o homem em um caráter único.</p>
+      <p><strong>A construção em Camões.</strong> Ele desenvolve o tema em <em>verso</em>, num <strong>soneto</strong> lírico: usa a anáfora (“mudam-se… muda-se…”), imagens cíclicas da natureza (a neve que vira “verde manto”) e constrói o sentido até o paradoxo final — a mudança que “não se muda já como soia”. O tratamento é mais subjetivo e emotivo.</p>
+      <p><strong>Fecho.</strong> Ambos são autores do Renascimento; a meditação sobre a instabilidade da condição humana é típica do humanismo, que recolocou o homem no centro da reflexão.</p>
+    </div>
+  </details>
+
+  <div class="box warn">
+    <span class="tag">Pegadinha desta questão</span>
+    <p>O erro mais comum é responder só “os dois falam de mudança” e parar. Isso atende apenas ⅓ do que foi pedido. Faltou dizer <em>como cada um</em> constrói — e a diferença essencial está aí: <strong>prosa reflexiva/argumentativa</strong> (ensaio) versus <strong>verso lírico/imagético</strong> (soneto).</p>
+  </div>
+
+  <!-- Questão b -->
+  <div class="qcard">
+    <span class="qlabel">Questão (b)</span>
+    <p>Apresente uma palavra que possa substituir respectivamente cada termo em destaque no texto de Montaigne sem que haja prejuízo de sentido.</p>
+  </div>
+
+  <h4>Como atacar</h4>
+  <p>A palavra-chave do comando é <strong>“sem prejuízo de sentido”</strong> — ou seja, o examinador quer o <em>sinônimo contextual</em> (Parte 2.2). E “respectivamente” avisa: a resposta deve seguir a <strong>ordem</strong> em que os termos aparecem no texto — primeiro <em>torcê-las</em>, depois <em>ordenado</em>.</p>
+
+  <details class="model">
+    <summary>Modelo de resposta — Questão (b)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p><strong>“torcê-las”</strong> → pode ser substituído por <strong>distorcê-las</strong> (ou <em>deturpá-las / forçá-las</em>). No contexto, os autores “torcem” as ações para encaixá-las no caráter inventado — alteram-nas artificialmente.</p>
+      <p><strong>“ordenado”</strong> → pode ser substituído por <strong>organizado</strong> (ou <em>estruturado / regrado / disciplinado</em>). O sentido é o de uma vida conduzida segundo um plano definido.</p>
+      <p>Resposta objetiva: “torcê-las → distorcê-las; ordenado → organizado”.</p>
+    </div>
+  </details>
+
+  <div class="box concept">
+    <span class="tag">Por que essas e não outras</span>
+    <p>O critério não é “é sinônimo no dicionário?”, e sim “<strong>encaixa nesta frase mantendo o sentido e a classe gramatical?</strong>”. Por isso recusamos “girá-las” para <em>torcer</em> (sentido literal) e “mandado” para <em>ordenado</em> (outro sentido do verbo <em>ordenar</em>). O contexto é o juiz final.</p>
+  </div>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 7. GABARITO COMENTADO ===================== -->
+<section id="p7">
+  <div class="sec-head">
+    <span class="sec-num">Parte 07 — Modelos de elite</span>
+    <h2>Gabarito comentado — respostas de nível FUVEST</h2>
+  </div>
+
+  <p>O material de gabarito reúne uma questão de Química e quatro questões de 2.ª fase da FUVEST. Cada uma é uma <strong>aula de elaboração de resposta</strong>. Vamos destrinchar todas.</p>
+
+  <!-- QUÍMICA -->
+  <h3>7.1 — Questão de Química: ler o enunciado vale meio ponto</h3>
+  <p>Por que uma questão de Química num material de Interpretação de Textos? Porque ela prova a tese da Parte 1: <strong>quem não interpreta o enunciado, não resolve o problema</strong> — mesmo dominando a Química.</p>
+
+  <div class="qcard">
+    <span class="qlabel">Enunciado</span>
+    <p>Um propelente dos foguetes do VLS é uma mistura de composto líquido, alumínio e perclorato de amônio, que reage segundo: NH₄CℓO₄ + (CH₂)ₙ + 2 Aℓ → ½ N₂ + CO + 5/2 H₂ + Aℓ₂O₃ + HCℓ. Usa-se a razão mássica <strong>4 : 1</strong> entre a substância composta e o metal, por quilo de mistura, <em>desconsiderando a resina hidrocarbônica</em>. (a) Qual é o reagente limitante? (b) Calcule a taxa da mistura desperdiçada na queima. <br>Dados: C=12; N=14; O=16; H=1; Cℓ=35; Aℓ=27 g/mol.</p>
+  </div>
+
+  <div class="box warn">
+    <span class="tag">O gesto de interpretação</span>
+    <p>Três informações do enunciado mudam tudo e precisam ser “grifadas” na leitura: <strong>(1)</strong> razão 4:1 entre perclorato e alumínio; <strong>(2)</strong> “por quilo de mistura” = trabalhar com 1000 g; <strong>(3)</strong> “desconsiderando a resina” = o líquido (CH₂)ₙ sai da conta de massa. Quem pula essas três pistas resolve o problema errado.</p>
+  </div>
+
+  <h4>Passo 1 — Repartir o quilo de mistura (razão 4:1)</h4>
+  <p>Perclorato : alumínio = 4 : 1 → total de 5 partes em 1000 g.</p>
+  <div class="calc">
+    <span class="eq">5 partes —— 1000 g  →  1 parte —— x   ⇒  x = 200 g de Aℓ</span>
+    <span class="eq">4 partes —— y         ⇒  y = 800 g de NH₄CℓO₄</span>
+    <p class="res">Massa de alumínio = 200 g · Massa de perclorato = 800 g</p>
+  </div>
+
+  <h4>Passo 2 — Identificar o reagente limitante</h4>
+  <p>Massa molar do NH₄CℓO₄ = 14 + (4×1) + 35 + (4×16) = <strong>117,5 g/mol</strong>. A equação mostra a proporção <strong>1 NH₄CℓO₄ : 2 Aℓ</strong>, ou seja, 117,5 g de perclorato para 2×27 = 54 g de alumínio.</p>
+  <p>Usamos o método da “multiplicação cruzada” para comparar — o <strong>menor</strong> produto indica o reagente limitante:</p>
+  <div class="calc">
+    <span class="eq">117,5 g (NH₄CℓO₄) ⟷ 54 g (Aℓ)  |  temos: 800 g  e  200 g</span>
+    <span class="eq">117,5 × 200 = 23 500   →   lado do alumínio  (MENOR)</span>
+    <span class="eq"> 54  × 800 = 43 200   →   lado do perclorato (MAIOR)</span>
+    <p class="res">→ Alumínio = reagente LIMITANTE · Perclorato (NH₄CℓO₄) = reagente em EXCESSO</p>
+  </div>
+  <p><strong>Resposta do item (a): o reagente limitante é o alumínio.</strong></p>
+
+  <h4>Passo 3 — Calcular o desperdício (item b)</h4>
+  <p>Quanto perclorato realmente reage com os 200 g de alumínio disponíveis?</p>
+  <div class="calc">
+    <span class="eq">117,5 g NH₄CℓO₄ —— 54 g Aℓ  →  z —— 200 g Aℓ</span>
+    <span class="eq">z = (117,5 × 200) ÷ 54  ⇒  z ≈ 435,18 g de NH₄CℓO₄ reagem</span>
+    <span class="eq">Excesso = 800 − 435,18 = 364,82 g de NH₄CℓO₄ não reagem</span>
+    <span class="eq">% sobre a mistura total: 1000 g —— 100%  |  364,82 g —— w</span>
+    <p class="res">w ≈ 36,48% da mistura é desperdiçada</p>
+  </div>
+
+  <div class="box scheme">
+    <span class="tag">A lição que transfere para Linguagens</span>
+    <p>Note o que aconteceu: a “dificuldade” não era a estequiometria — era <strong>extrair do enunciado os três dados ocultos</strong> e <strong>responder os dois itens (a e b)</strong>. Exatamente o método da Parte 3. Interpretar é uma só competência, em qualquer prova.</p>
+  </div>
+
+  <div class="videos">
+    <div class="vhead">Vídeos recomendados — reagente limitante e excesso</div>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=UfQ60Kw6MxQ" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Estequiometria — Reagente em Excesso e Reagente Limitante (Aula 05)</span><span class="vchan">Cálculo estequiométrico passo a passo</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=vDLTQ9t2Ar4" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Estequiometria — reagente limitante e em excesso</span><span class="vchan">Brasil Escola · teoria e resolução de questões</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+  </div>
+
+  <!-- FUVEST Q1 -->
+  <h3>7.2 — FUVEST · Questão 1 — “Os três Rios de Janeiro”</h3>
+  <p>O texto de Silvio Essinger descreve <strong>três imagens</strong> do Rio de Janeiro: o <strong>primeiro</strong>, nostálgico e romantizado (as “Ipanemas perdidas”, a bossa nova, o recato de outro tempo); o <strong>segundo</strong>, a “terra de ninguém” violenta dos noticiários de TV; o <strong>terceiro</strong>, o Rio real, do trabalhador comum e da diversidade cultural.</p>
+
+  <div class="qcard">
+    <span class="qlabel">Item (a)</span>
+    <p>Aponte a figura de linguagem utilizada para descrever o “segundo Rio” e explique como o seu uso contribui para a caracterização em curso no texto.</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q1 (a)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p>A figura de linguagem é a <strong>metáfora</strong>. O “segundo Rio” é construído por uma série de metáforas — “terra de ninguém”, “trombeteada nos noticiários de TV”, “cada esquina é um Vietnã ou Iraque”.</p>
+      <p>Essas metáforas contribuem para a caracterização ao representar a cidade como um lugar <strong>violento e desgovernado</strong> — a imagem negativa amplamente divulgada pela mídia. Esse Rio funciona como contraponto à primeira imagem, a da “Cidade Maravilhosa” romantizada pela bossa nova. As duas imagens, juntas, servem de parâmetro para caracterizar o terceiro Rio, o real.</p>
+    </div>
+  </details>
+
+  <div class="qcard">
+    <span class="qlabel">Item (b)</span>
+    <p>Com base no texto, explique em que consiste o “terceiro Rio de Janeiro”.</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q1 (b)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p>O terceiro Rio de Janeiro é caracterizado pelas <strong>vivências cotidianas dos seus cidadãos</strong>, que vão além das duas visões estereotipadas anteriores. É o Rio do povo trabalhador, marcado pela <strong>diversidade cultural, étnica e religiosa</strong> — do samba de roda ao techno, da umbanda ao “padre pop”. Evidencia-se, assim, que a cidade, como todo grande centro urbano brasileiro, é <strong>diversa e complexa</strong>.</p>
+    </div>
+  </details>
+
+  <div class="box add">
+    <span class="tag">Complemento para melhor compreensão</span>
+    <p><strong>Metáfora</strong> é a figura que estabelece uma comparação <em>implícita</em> — sem o conectivo “como”. “Cada esquina é um Vietnã” identifica diretamente a esquina a uma guerra. Não confunda com a <strong>comparação</strong>, que usaria o conectivo: “cada esquina é <em>como</em> um Vietnã”.</p>
+  </div>
+
+  <div class="videos">
+    <div class="vhead">Vídeo recomendado — metáfora</div>
+    <a class="vbtn" href="https://www.youtube.com/watch?v=hQS8o50k3rI" target="_blank" rel="noopener">
+      <span class="play"></span>
+      <span class="vinfo"><span class="vtitle">Figuras de Linguagem — Metáfora — Prof. Noslen</span><span class="vchan">A figura mais cobrada nos vestibulares, explicada do zero</span></span>
+      <span class="go">Assistir ▸</span>
+    </a>
+  </div>
+
+  <!-- FUVEST Q2 -->
+  <h3>7.3 — FUVEST · Questão 2 — “Sweet Home”, de Drummond</h3>
+  <div class="box add">
+    <span class="tag">Complemento para melhor compreensão</span>
+    <p><strong>Carlos Drummond de Andrade</strong> é um dos maiores poetas do <strong>Modernismo</strong> brasileiro. O poema “Sweet Home” pertence a <em>Alguma Poesia</em> (1930), fase de crítica social bem-humorada. A chave do poema é a <strong>ironia</strong>: dizer algo para significar o seu contrário, ou expor uma situação de modo que o leitor perceba a crítica embutida.</p>
+  </div>
+
+  <div class="qcard">
+    <span class="qlabel">Item (a)</span>
+    <p>Por que a expressão em inglês <em>sweet home</em> suscita, no título do poema, um teor de ironia?</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q2 (a)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p>O título é irônico porque conota o sentido que se depreende da leitura do poema: a <strong>alienação da “burguesia contente”</strong> em relação ao contexto sociopolítico do Brasil. Essa burguesia vive fechada em si mesma (“Ó gozo de minha poltrona!”) e é <strong>colonizada culturalmente</strong>, adotando costumes ingleses — o cachimbo, o chá com torradas. O próprio fato de o lar ser nomeado em inglês, e não em português, denuncia essa vida fútil e ociosa — a “doçura de folhetim” já anunciada, com ironia, no título.</p>
+    </div>
+  </details>
+
+  <div class="qcard">
+    <span class="qlabel">Item (b)</span>
+    <p>Os termos “bruto romance” e “folhetins”, como formas literárias, representam diferentes visões de mundo, estabelecendo entre si um contraste simbólico. Comente.</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q2 (b)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p>No verso “a vida é um bruto romance”, há alusão ao <strong>romance</strong> como forma literária: gênero narrativo em que ocorre um conflito, muitas vezes insolúvel, entre o protagonista e o contexto “bruto” da vida — aqui, “bruto” tem o campo semântico do irracional, do desagradável, do violento.</p>
+      <p>Já “nós vivemos folhetins sem o saber” remete ao <strong>folhetim</strong>: narrativa típica do século XIX, publicada em capítulos nos jornais, de enredo sentimental, conflitos leves e final feliz, que retratava e agradava a vida burguesa.</p>
+      <p><strong>O contraste:</strong> o romance simboliza a vida real e dura; o folhetim simboliza o viver burguês doce, tranquilo e alienado. Ironicamente, o eu lírico habita o conforto do “folhetim” enquanto a vida, de fato, é um “bruto romance”.</p>
+    </div>
+  </details>
+
+  <!-- FUVEST Q3 -->
+  <h3>7.4 — FUVEST · Questão 3 — “Contra o fanatismo”, de Amós Oz</h3>
+  <p>O texto distingue a crise política não como questão de religião ou etnia, mas como “a luta antiga entre fanatismo e pragmatismo, pluralismo e tolerância”. O autor descreve a chamada “síndrome de Jerusalém”.</p>
+
+  <div class="qcard">
+    <span class="qlabel">Item (a)</span>
+    <p>Como a “síndrome de Jerusalém” pode ser relacionada à “reivindicação típica dos fanáticos”?</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q3 (a)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p>A “síndrome de Jerusalém” é um transtorno mental marcado por um <strong>ímpeto religioso extremamente fervoroso</strong> que acomete pessoas ao chegarem a Jerusalém: tomadas de clamor religioso, passam a profetizar e a agir de forma irracional e intransigente diante de outras religiões — chegando a pôr fogo em mesquitas, igrejas ou sinagogas.</p>
+      <p>Esse radicalismo se relaciona à <strong>“reivindicação típica dos fanáticos”</strong> descrita no início do texto — “se julgo algo mau, elimino-o, junto com seus vizinhos”. Em ambos os casos, a intolerância extrema desemboca na <strong>violência</strong> contra o que é diferente.</p>
+    </div>
+  </details>
+
+  <div class="qcard">
+    <span class="qlabel">Item (b)</span>
+    <p>As duas ocorrências da palavra “transparente” apresentam o mesmo sentido no texto? Justifique.</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q3 (b)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p><strong>Não</strong>, as duas ocorrências não têm o mesmo sentido — trata-se de um caso de <strong>polissemia</strong>.</p>
+      <p>Em “capitalismo transparente”, a palavra está no sentido <strong>conotativo</strong>: refere-se a um sistema econômico que zelaria pela honestidade, pela igualdade social e pela justiça.</p>
+      <p>Em “o maravilhoso ar transparente da montanha”, a palavra está no sentido <strong>denotativo</strong>: denota o ar puro, limpo, sem poluição.</p>
+    </div>
+  </details>
+
+  <div class="box concept">
+    <span class="tag">Conexão direta com a Parte 2</span>
+    <p>Esta questão é a prova viva da aula de vocabulário: a mesma palavra, dois sentidos — um literal, outro figurado. Quem estudou denotação x conotação responde com segurança. Esse tipo de questão é <strong>recorrente na FUVEST</strong>.</p>
+  </div>
+
+  <!-- FUVEST Q4 -->
+  <h3>7.5 — FUVEST · Questão 4 — Machado de Assis &amp; Helena Morley</h3>
+  <p>A questão confronta dois trechos: o capítulo XI de <em>Memórias Póstumas de Brás Cubas</em> (Machado de Assis) e uma entrada do diário <em>Minha vida de menina</em> (Helena Morley).</p>
+
+  <div class="qcard">
+    <span class="qlabel">Item (a)</span>
+    <p>Os trechos se assemelham por serem retratos dos pais feitos pelos filhos — no primeiro, o menino Brás Cubas; no segundo, a pequena Helena. Você concorda? Justifique com base nos <strong>tempos verbais</strong> e na <strong>linguagem</strong>.</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q4 (a)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p>Concordo apenas <strong>parcialmente</strong>.</p>
+      <p>A afirmação é <strong>falsa quanto a Machado de Assis</strong>: o narrador de <em>Memórias Póstumas</em> é um “defunto autor” que, do túmulo, relembra sua trajetória — <u>não</u> é um menino. Isso se comprova pelos verbos no <strong>pretérito imperfeito</strong> (“adorava-me”, “era”, “tinha”), que indicam um passado distante, e pela linguagem <strong>elaborada e madura</strong>, cheia de jogos sofisticados de ideias (o contraste entre “pouco cérebro” e “muito coração”; ser “caseira, apesar de bonita”; a associação inusitada entre temer as trovoadas e temer o marido). Tal sofisticação não caberia a um menino.</p>
+      <p>A afirmação é <strong>verdadeira quanto a Helena Morley</strong>: por se tratar de um diário, a narradora relata fatos recém-acontecidos, na própria adolescência. Comprovam-no os verbos no <strong>presente</strong> (“é”, “gostam”, “gosto”, “fico”) e a linguagem <strong>simples</strong>, de orações curtas e coordenadas, próxima da fala corrente.</p>
+      <p><strong>Conclusão:</strong> a comparação proposta pela questão é parcialmente correta.</p>
+    </div>
+  </details>
+
+  <div class="qcard">
+    <span class="qlabel">Item (b)</span>
+    <p>As expressões “O marido era na Terra o seu deus” e “só Nossa Senhora pode ser melhor que mamãe” exemplificam, respectivamente, patriarcado e matriarcado. Você concorda? Justifique com base em ambas as passagens.</p>
+  </div>
+  <details class="model">
+    <summary>Modelo de resposta — Q4 (b)<span class="hint">tente antes de abrir</span></summary>
+    <div class="model-body">
+      <p><strong>Não concordo</strong> com a afirmação como um todo.</p>
+      <p>É verdade que “O marido era na Terra o seu deus” revela o <strong>patriarcalismo</strong> — o homem, na figura do pai, como centro do poder da família e da sociedade.</p>
+      <p>Porém, a associação que Helena Morley faz entre a mãe e Nossa Senhora <strong>não evidencia matriarcado</strong>. Matriarcado seria um sistema em que a mulher ocupa o centro do poder familiar e social — e isso não ocorre na obra. Apesar do núcleo predominantemente feminino (tias, primas), o meio social de Helena não apresenta traços matriarcais: até D. Teodora, proprietária rural, é viúva, herdeira do marido e controlada economicamente pelo filho. Além disso, a própria diarista nota o pouco valor dado à mãe, em contraste com o pai, muito bem conceituado.</p>
+      <p>Portanto, não se estabelece entre os trechos um contraste entre patriarcado e matriarcado.</p>
+    </div>
+  </details>
+
+  <div class="box warn">
+    <span class="tag">A grande lição da Questão 4</span>
+    <p>Repare: nas duas perguntas a banca <em>afirma algo</em> e pergunta “você concorda?”. A resposta de elite <strong>não aceita a afirmação de cara</strong> — ela testa cada parte. Discordar (ou concordar só em parte) é não apenas permitido: muitas vezes é a <strong>resposta certa</strong>. O que nunca pode faltar é a <strong>justificativa ancorada no texto</strong>.</p>
+  </div>
+</section>
+
+<div class="div-orn">❧ ❧ ❧</div>
+
+<!-- ===================== 8. PEGADINHAS ===================== -->
+<section id="p8">
+  <div class="sec-head">
+    <span class="sec-num">Parte 08 — Blindagem para a prova</span>
+    <h2>Pegadinhas, erros frequentes e o que mais cai</h2>
+  </div>
+
+  <h3>8.1 — Os erros que mais custam pontos</h3>
+  <div class="box warn">
+    <span class="tag">Erros frequentes</span>
+    <p><strong>① Responder só parte da questão.</strong> Comandos múltiplos (“indique X <em>e</em> Y”) são armadilha clássica. Numere os pedidos.</p>
+    <p><strong>② Copiar o texto em vez de explicar.</strong> Transcrição não é resposta. Parafraseie; cite só como prova, curto e entre aspas.</p>
+    <p><strong>③ Sinônimo de dicionário fora de contexto.</strong> “Velho/usado” serve para carro, não para “velho amigo”. O contexto manda.</p>
+    <p><strong>④ Ficar em cima do muro</strong> nas questões “você concorda?”. Tome posição — inclusive a posição “concordo parcialmente”.</p>
+    <p><strong>⑤ Confundir metáfora com comparação.</strong> Comparação tem conectivo (“como”, “tal qual”); metáfora não tem.</p>
+    <p><strong>⑥ Ignorar o fecho do poema.</strong> Em sonetos, o sentido decisivo costuma estar na “chave de ouro” — o último terceto/verso.</p>
+  </div>
+
+  <h3>8.2 — O que mais cai em provas concorridas</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Tema</th><th>Como costuma ser cobrado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sinônimo contextual</strong></td><td>“Substitua o termo X sem prejuízo de sentido” — clássico de FUVEST.</td></tr>
+      <tr><td><strong>Polissemia</strong></td><td>“A palavra X tem o mesmo sentido nas duas ocorrências?” — exige denotação x conotação.</td></tr>
+      <tr><td><strong>Figuras de linguagem</strong></td><td>Identificar e explicar o <em>efeito de sentido</em> — sobretudo metáfora, ironia, antítese e anáfora.</td></tr>
+      <tr><td><strong>Comparação de dois textos</strong></td><td>Afinidade temática + diferença na construção (gênero, linguagem, recursos).</td></tr>
+      <tr><td><strong>Tempos verbais</strong></td><td>Relacionar o tempo verbal ao efeito de sentido (proximidade x distância temporal).</td></tr>
+      <tr><td><strong>Crítica social no Modernismo</strong></td><td>Ironia e alienação burguesa — caso de Drummond.</td></tr>
+      <tr><td><strong>Tema da transitoriedade</strong></td><td>O “tudo muda” do Classicismo — Camões é presença certa.</td></tr>
+      <tr><td><strong>Questões “você concorda?”</strong></td><td>Posicionamento + justificativa textual; a banca testa o pensamento crítico.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== 9. REVISÃO FINAL ===================== -->
+<section id="p9">
+  <div class="sec-head">
+    <span class="sec-num">Parte 09 — Síntese</span>
+    <h2>Revisão final dos conceitos-chave</h2>
+  </div>
+
+  <div class="recap">
+    <h3>Leve isto para a prova</h3>
+    <ul>
+      <li><b>Vocabulário é contexto.</b> O sentido de uma palavra se ajusta ao redor dela; o sinônimo válido é o <em>contextual</em>.</li>
+      <li><b>Denotação x conotação.</b> Literal x figurado — a base de toda interpretação e de questões de polissemia.</li>
+      <li><b>Leia o comando como detetive.</b> Cada verbo (indique, explique, justifique, comente) define o que e o quanto responder.</li>
+      <li><b>Responda todos os itens.</b> Numere os pedidos do enunciado; confira um a um antes de entregar.</li>
+      <li><b>Estrutura da resposta:</b> frase-resposta direta → justificativa com prova do texto → fecho.</li>
+      <li><b>Não copie, não enrole.</b> Parafraseie, seja objetivo, escreva só o que foi pedido.</li>
+      <li><b>Montaigne:</b> o homem é inconstante; julgue-o “peça por peça” — ensaio, prosa reflexiva e argumento de autoridade.</li>
+      <li><b>Camões:</b> “todo o Mundo é composto de mudança” — soneto, verso lírico, e o paradoxo final: a mudança que já não muda “como soia”.</li>
+      <li><b>Interpretar é uma só competência.</b> Vale para a questão de Química e para a de Literatura — quem lê bem o enunciado, resolve.</li>
+      <li><b>“Você concorda?”</b> Tome posição clara — inclusive “parcialmente” — e justifique sempre com o texto.</li>
+    </ul>
+  </div>
+
+  <p style="text-align:center;font-style:italic;color:var(--ink-soft);margin-top:30px">
+    Estude com calma, refaça as questões sem olhar os modelos e assista aos vídeos de cada parte.<br>A interpretação de textos não se decora — se treina.
+  </p>
+  <p style="text-align:center"><a class="backtop" href="#">↑ Voltar ao topo</a></p>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="crest">Leitura e Interpretação de Textos · 2.ª Série — Ensino Médio</div>
+  Aula completa — Estudo de vocabulário e elaboração de respostas · Prof. Thiago<br>
+  Material de estudo organizado a partir dos textos de Montaigne, Camões e das questões de 2.ª fase FUVEST.
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function upd(){
+    var h=document.documentElement;
+    var sc=h.scrollTop||document.body.scrollTop;
+    var max=(h.scrollHeight-h.clientHeight)||1;
+    bar.style.width=(sc/max*100)+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
+})();
+</script>
+</body>
+</html>
